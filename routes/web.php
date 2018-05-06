@@ -37,8 +37,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/', 'DashBoardController@Index')->name('dashboad');
 
-    Route::get('unidades-medidas', 'PrdUnidadesMedida@showForm')->name('prod-undmed-show-form');
-    Route::resource('medidas', 'PrdUnidadesMedida', ['except'=>'edit','create']);
+    Route::get('unidades-medidas', 'PrdUnidsMedidaController@showForm')->name('prd.undmed.show.form');
+    Route::resource('medidas', 'PrdUnidsMedidaController', ['except'=>'edit','create']);
 
 });
 

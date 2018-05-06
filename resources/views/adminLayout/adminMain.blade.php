@@ -13,12 +13,18 @@
         @include('adminLayout.sidebar.main-sidebar')      <!-- Left side column. contains the logo and sidebar -->
 
         <div class="content-wrapper">                     <!-- Content Wrapper. Contains page content -->
-            @include('adminLayout.migas')                 <!-- Content Header (Page header) -->
+             {{--  @include('adminLayout.migas')  --}}      <!--            Content Header (Page header) -->
+
             <section class="content container-fluid">     <!-- Main content --> <!---  Your Page Content Here | -->
 
-                 @yield('contenido')
+                <div id="VueApp">
+
+                    @yield('contenido')
+
+                </div>
 
             </section>
+
         </div><!-- /.content --><!-- /.content-wrapper -->
 
         @include('adminLayout.sidebarRigth.main-sidebar')
@@ -34,7 +40,6 @@
     <!-- ./wrapper -->
     <!-- REQUIRED JS SCRIPTS -->
     @include('adminLayout.files-js')
-
 
 </body>
 </html>

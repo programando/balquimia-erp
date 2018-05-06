@@ -86,15 +86,7 @@
   </div>
 
   @include('adminLayout.files-js')
-  <script>
-    $(document).ready(function(){
-      $('input').iCheck({
-        checkboxClass: 'icheckbox_square-green',
-        radioClass: 'iradio_square',
-        increaseArea: '20%' // optional
-        });
-    });
-  </script>
+
 
 </body>
 

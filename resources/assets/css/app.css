@@ -1,4 +1,12 @@
 
+
+blockquote .frase{
+  font-size: 12.5px !important;
+  font-style: italic ;
+
+}
+
+
 .alert-danger {
  color: white;
  background-color: #db2736 !important;
@@ -21,8 +29,14 @@
 
 .login-box,
 .register-box {
-  width: 560px !important;
-
+  width: 460px !important;
 }
 
+.box-header {
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+
+}
 

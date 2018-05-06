@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class PrdUndsMedida extends Model
 {
+     protected $table      ='prd_unds_medidas';
      protected $primaryKey = 'id_med';
-     public $timestamps = false;
-     protected $table ='prd_unds_medidas';
+     public $timestamps    = false;
+
 
     protected $casts = [
      'inactivo' => 'bool'
