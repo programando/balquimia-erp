@@ -27,6 +27,7 @@ class PrdUnidsMedidaController extends Controller
             ],
             'Registros' => $UnidadesMedida
         ];
+
     }
 
 

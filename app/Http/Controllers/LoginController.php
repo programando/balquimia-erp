@@ -18,6 +18,7 @@ use \App\Models\TercerosUsersToken  as UserToken;
 //***************//
 
 use Auth;
+use Cache;
 use DB;
 use Redirect;
 use Session;
@@ -58,6 +59,7 @@ class LoginController extends Controller
     public function getLogOut() {
             Auth::logout();
             Session::flush();
+            Cache::flush();
             return Redirect('/');
     }
 
