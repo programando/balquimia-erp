@@ -24,7 +24,7 @@
         <a href="#" class="btn btn-success btn-flat">Configurar Perfil</a>
       </div>
       <div class="pull-right">
-        <a href=  "{{ route( 'cerrar-sistema' )}}" class="btn btn-success btn-flat">Cerrr sesión</a>
+        <a href=  "{{ route( 'cerrar-sistema' )}}" class="btn btn-success btn-flat">Cerrar sesión</a>
       </div>
     </li>
   </ul>

@@ -1,59 +1,3 @@
-
-
-blockquote .frase{
-  font-size: 12.5px !important;
-  font-style: italic ;
-
-}
-
-
-.alert-danger {
- color: white;
- background-color: #db2736 !important;
- border-color: #bf111f;
-}
-
-
-.CentrarCol{
- position: absolute;
- top: 50%;
- left: 50%;
- transform: translate(-50%, -50%);
-}
-
-.col-center{
- float: none;
- margin: 0 auto;
-}
-
-
-.login-box,
-.register-box {
-  width: 460px !important;
-}
-
-.box-header {
-    padding-left: 10px;
-    padding-top: 5px;
-    padding-right: 10px;
-    padding-bottom: 5px;
-}
-
-.login-logo, .register-logo {
-    font-size: 35px;
-    text-align: center;
-   margin-bottom: 5px;
-    font-weight: 300;
-    padding-bottom: 10px;
-}
-
-.sub-tit-logo {
-  font-size: 18px;
-  font-weight: 200;
-}
-
-
-
 /*
  * Note that this is toastr v2.1.3, the "latest" version in url has no more maintenance,
  * please go to https://cdnjs.com/libraries/toastr.js and pick a certain version you want to use,
@@ -289,4 +233,44 @@ button.toast-close-button {
 }
 
 
+
+blockquote .frase{
+  font-size: 12.5px !important;
+  font-style: italic ;
+
+}
+
+
+.alert-danger {
+ color: white;
+ background-color: #db2736 !important;
+ border-color: #bf111f;
+}
+
+
+.CentrarCol{
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+
+.col-center{
+ float: none;
+ margin: 0 auto;
+}
+
+
+.login-box,
+.register-box {
+  width: 460px !important;
+}
+
+.box-header {
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+
+}
 

@@ -15,7 +15,9 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 Vue.config.devtools = true;
-Vue.component('produndmedidas'      , require('./components/ProdUndMedidas.vue'));
+Vue.component('produndmedidas'     , require('./components/productos/ProdUndMedidas.vue'));
+Vue.component('cargos'             , require('./components/generales/Cargos.vue'));
+Vue.component('lineas'             , require('./components/generales/Lineas.vue'));
 
 const VueApp = new Vue({
 

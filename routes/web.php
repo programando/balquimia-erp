@@ -34,11 +34,17 @@ Route::post('update-password'         , 'LoginController@UpdatePassword')->name(
 
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/',                     'DashBoardController@Index')->name('dashboad');
+    Route::get('/menu-load',            'DashBoardController@MenuLoad')->name('menu.load');
 
-    Route::get('/', 'DashBoardController@Index')->name('dashboad');
+    Route::get('unidades-medidas',      'PrdUnidsMedidaController@showForm')->name('prd.undmed.show.form');
+    Route::resource('medidas',          'PrdUnidsMedidaController', ['except'=>'edit','create']);
 
-    Route::get('unidades-medidas', 'PrdUnidsMedidaController@showForm')->name('prd.undmed.show.form');
-    Route::resource('medidas', 'PrdUnidsMedidaController', ['except'=>'edit','create']);
+    Route::get('cargos-perfiles',       'RhCargosController@showForm')->name('gral.cargos.show.form');
+    Route::resource('cargos',           'RhCargosController', ['except'=>'edit','create']);
+
+    Route::get('lineas-productos',      'GralLineasController@showForm')->name('gral.lineas.show.form');
+    Route::resource('lineas',           'GralLineasController', ['except'=>'edit','create']);
 
 });
 

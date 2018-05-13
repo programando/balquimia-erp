@@ -134,8 +134,10 @@ return [
         'username'              => 'usuario',
         'year'                  => 'año',
         ////
-        'nom_perfil'            => 'cargo o perfil',
+        'nom_cargo'            => 'cargo o perfil',
         'nom_mrca'              => 'marca',
-        'nom_med'               => 'Nombre de la unidad de medida',
+        'nom_med'               => 'nombre de la unidad de medida',
+        'nom_linea'             => 'nombre de línea',
+        'cod_linea'            =>  'código',
     ],
 ];

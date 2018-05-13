@@ -6,20 +6,22 @@ use Illuminate\Http\Request;
 
 use App\Models\Menu as Menu;
 
-use DB;
+
 use Cache;
+use DB;
+
 class DashBoardController extends Controller
 {
     public function Index(){
+      return view('dashboard.index');
+    }
 
-
-      $Menu = Cache::tags('MenuOpciones')->rememberForever('Menu', function(){
+    public function MenuLoad(){
+        Cache::flush();
+        $Menu = Cache::tags('MenuOpciones')->rememberForever('Menu', function(){
             return DB::select(' call menus_listado() ');
-      });
-
-      //return  $Menu;
-      return view('dashboard.index', compact('Menu'));
-
+        });
+        return redirect()->route('dashboard', compact('Menu'));
     }
 
 

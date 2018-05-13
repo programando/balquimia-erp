@@ -51,8 +51,6 @@ class LoginController extends Controller
            return Redirect('/login')
                 ->withInput( $FormData->only('email','remember_me'))
                 ->withErrors( ['email' =>  trans('_app.email_pass_error') ] );
-
-
     }
 
 

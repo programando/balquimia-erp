@@ -2,10 +2,8 @@
 
 return [
 
-    'APP_NAME' => 'Balquimia Erp',
-
-
-
+    'APP_NAME' => 'Balquimia - ERP',
+    'APP_DESCRIPTION' => 'Sistema administrativo integral',
 
 ];
 

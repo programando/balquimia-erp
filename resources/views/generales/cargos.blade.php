@@ -1,15 +1,8 @@
 
 @extends('adminLayout.adminMain')
 
-
-
 @section('contenido')
-
-
-
-       <produndmedidas></produndmedidas>
-
-
+      <cargos></cargos>
 @endsection
 
 

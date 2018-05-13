@@ -2,13 +2,9 @@
 @extends('adminLayout.adminMain')
 
 
-
 @section('contenido')
 
-
-
-       <produndmedidas></produndmedidas>
-
+   <lineas></lineas>
 
 @endsection
 

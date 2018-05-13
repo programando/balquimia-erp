@@ -20,8 +20,9 @@ mix.js(['resources/assets/js/app.js',
       'resources/assets/js/toastr.js',
       'resources/assets/js/vue.js',
       'resources/assets/js/axios.js',
+      'resources/assets/js/app-menu.js',
     ], 'public/js/app.js'    ) // Archivo de salida JS
    .styles ([
         'resources/assets/css/toastr.css',
         'resources/assets/css/app.css',
-       ], 'public/css/app.css') ;     // Archivo de salida CSS
+       ], 'public/css/app-temp.css') ;     // Archivo de salida CSS

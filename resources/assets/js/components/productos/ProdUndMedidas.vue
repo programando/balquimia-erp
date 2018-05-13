@@ -5,20 +5,20 @@
           <div class="col-sm-8 col-sm-offset-2">
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h4>
-                  Unidades de Medida
-                  <button class="btn  pull-right bg-blue" @click="ModalOpen('NuevoRegistro')"> Crear Nuevo Registro</button>
+              <h3 >{{ Windows_Title }}
 
-                </h4>
+                <button class="btn  pull-right bg-blue" @click="ModalOpen('NuevoRegistro')"> Crear Nuevo Registro</button>
+
+                </h3>
               </div>
 
               <div class="box-body">
                 <table  class="display table-bordered table-striped table-condensed" style="width:100%;">
                   <thead>
                     <tr>
-                      <th>Unidad de Medida</th>
-                      <th>Estado</th>
-                      <th>Editar/Eliminar</th>
+                      <th v-text="Table_Column1"></th>
+                      <th v-text="Table_Column2"></th>
+                      <th v-text="Table_Column3"></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -67,6 +67,9 @@
           </div>
         </div>
 
+
+
+
           <!-- MODAL PARA EDITAR Y GRABAR NUEVOS REGISTROS -->
           <div class="modal fade" :class="{'mostrar':ModalShowNewEdit}" tabindex="-1" role="dialog" >
             <div class="modal-dialog" role="document">
@@ -80,30 +83,29 @@
                 <div class="modal-body">
 
                   <form action="" method="post" enctype="multipart/form-data" @keydown="errors.clear($event.target.name)">
-                    <label>Nombre :</label>
+                      <label>Nombre :</label>
 
+                      <div class="form-group has-feedback" :class = "{ 'has-error': errors.has('nom_med')}">
+                        <div class="form-line"  >
+                          <input type="text" class="form-control" placeholder="Nombre de la unidad de medida"
+                            autofocus = "autofocus"
+                            name      = 'nom_med'
+                            v-model   = "nom_med"
+                             >
+                        </div>
 
-                    <div class="form-group has-feedback" :class = "{ 'has-error': errors.has('nom_med')}">
-                      <div class="form-line"  >
-                        <input type="text" class="form-control" placeholder="Nombre de la unidad de medida"
-                          autofocus = "autofocus"
-                          name      = 'nom_med'
-                          v-model   = "nom_med"
-                           >
+                        <i class="fa  fa-hand-o-right error" v-if="errors.has('nom_med')"></i>
+                        <label class="error"  v-if="errors.has('nom_med')" v-text="errors.get('nom_med')"></label>
+
                       </div>
-
-                      <i class="fa  fa-hand-o-right error" v-if="errors.has('nom_med')"></i>
-                      <label class="error"  v-if="errors.has('nom_med')" v-text="errors.get('nom_med')"></label>
-
-                    </div>
-                    <!-- Campo Inactivo -->
-                     <div v-if="tipoAccion==2">
-                        <input type="checkbox" id="md_checkbox_21"
-                          v-model="inactivo" :checked="inactivo" name="inactivo">
-                        <label for="md_checkbox_21" v-if="inactivo">Unidad de medida INACTIVA</label>
-                        <label for="md_checkbox_21" v-if="!inactivo">Unidad de medida ACTIVA</label>
-                    </div>
-                    <input type="hidden" v-model="id_med">
+                      <!-- Campo Inactivo -->
+                       <div v-if="tipoAccion==2">
+                          <input type="checkbox" id="md_checkbox_21"
+                            v-model="inactivo" :checked="inactivo" name="inactivo">
+                          <label for="md_checkbox_21" v-if="inactivo" v-text="Modal_Campo_Inactivo"></label>
+                          <label for="md_checkbox_21" v-if="!inactivo" v-text="Modal_Campo_Activo"></label>
+                      </div>
+                      <input type="hidden" v-model="id_med">
                   </form>
 
                 </div>
@@ -119,9 +121,6 @@
             </div>
             <!-- /.modal-dialog -->
           </div> <!--Fin del modal-->
-
-
-
 
          <!-- MODAL PARA BORRAR REGSITRO -->
         <div class="modal fade"  tabindex="-1" role="dialog" :class="{'mostrar-borrar':ModalShowDelete}">
@@ -158,14 +157,6 @@
 
 
 <script>
-
-    $(document).ready(function(){
-      $('input').iCheck({
-        checkboxClass: 'icheckbox_square-green',
-        radioClass: 'iradio_square',
-        increaseArea: '20%' // optional
-        });
-    });
 
 
 class ErrorsController {
@@ -213,8 +204,15 @@ class ErrorsController {
                       'to'           : 0,
                   },
                   offset : 3,
+                  Windows_Title        : 'Unidades de Medida',
+                  Table_Column1        : 'Unidad de Medida',
+                  Table_Column2        : 'Estado',
+                  Table_Column3        : 'Editar/Eliminar',
+                  Modal_Campo_Inactivo : 'Unidad de medida INACTIVA',
+                  Modal_Campo_Activo   : 'Unidad de medida ACTIVA',
               }
        },
+
 
       computed:{
                 isActived: function(){
@@ -294,7 +292,7 @@ class ErrorsController {
                     Me.Listar();
                     toastr.success( Me.TextoDeleted );
                   }).catch( error => {
-                      toastr.error( TextoIntegridadRef );
+                      toastr.error( Me.TextoIntegridadRef );
                     });
                },
 
@@ -342,8 +340,7 @@ class ErrorsController {
             },
          },
 
-
-    }
+    };
 </script>
 
 

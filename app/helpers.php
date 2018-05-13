@@ -84,4 +84,12 @@
         }
 
 
+        if (!function_exists('SetActiveRoute')) {
+            // Establece la ruta activa
+            function SetActiveRoute( $NomRuta ) {
+                return   request()->routeIs( $NomRuta ) ? 'treeview active' : 'treeview';
+            }
+        }
+
+
 ?>
