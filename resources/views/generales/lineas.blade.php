@@ -4,6 +4,7 @@
 
 @section('contenido')
 
+
    <lineas></lineas>
 
 @endsection

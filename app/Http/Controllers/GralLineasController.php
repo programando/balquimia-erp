@@ -35,7 +35,7 @@ class GralLineasController extends Controller
 
     public function showForm(){
 
-        return Lineas::with('SubLineas')->get();
+        //return Lineas::with('SubLineas')->get();
 
         $Page_Title = $this->Page_Title;
         return view('generales.lineas', compact('Page_Title'));
