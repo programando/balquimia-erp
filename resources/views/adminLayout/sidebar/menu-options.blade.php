@@ -7,12 +7,7 @@
       </i> <span>Inicio</span></a>
   </li>
 
-   @if ( config('app.env')=='local')
-      <li class="treeview">
-        <a href=  "{{ route( 'menu.load' )}}"><i class="fa fa-home">
-        </i> <span>Reiniciar Menu</span></a>
-     </li>
-   @endif
+
 
      @php
       $ImprimirUl = FALSE ;
