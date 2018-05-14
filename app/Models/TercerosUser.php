@@ -21,21 +21,16 @@ class TercerosUser extends Authenticatable
      //--- DEFINICIÓN DE RELACIONES DEL MODELO CON OTRAS TABLAS
      //=========================================================
 
-     public function perfil(){
-        //return $this->hasOne('App\Profile', 'clave_foranea', 'clave_local_a_relacionar');
-        return $this->hasOne(Perfile::class,'id_perfil');
-     }
 
      /***********************************************************************
         MUTATORS:  Modifican datos antes de que lleguen a la base de datos
     ***********************************************************************/
-
     public function setPasswordAttribute ( $value ){
         $this->attributes['password'] = Hash::make( $value );
-    }//
+    }
 
     public function setEmailAttribute ( $value ){
         $this->attributes['email']          = mb_strtolower( $value,'UTF-8');
-    }//
-    //
+    }
+
 }
