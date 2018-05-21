@@ -7,7 +7,7 @@
 <script src="{{asset('plugins/icheck/icheck.js')}}"></script>
 
 <script src="{{asset('js/Vue-App.js')}}"></script>
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{mix('js/app.js')}}"></script>
 
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.

@@ -18,7 +18,6 @@ mix.js(['resources/assets/js/app.js',
 
    mix.scripts([
       'resources/assets/js/toastr.js',
-      'resources/assets/js/vue.js',
       'resources/assets/js/axios.js',
       'resources/assets/js/app-menu.js',
     ], 'public/js/app.js'    ) // Archivo de salida JS
@@ -26,3 +25,13 @@ mix.js(['resources/assets/js/app.js',
         'resources/assets/css/toastr.css',
         'resources/assets/css/app.css',
        ], 'public/css/app-temp.css') ;     // Archivo de salida CSS
+
+
+    mix.browserSync({
+      proxy: 'http://balquimia-erp.local',
+      open: false,
+      //browser : 'Google Chrome',
+    });
+
+    mix.disableNotifications();
+

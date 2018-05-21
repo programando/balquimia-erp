@@ -3,7 +3,8 @@
 
 <ul class="sidebar-menu" data-widget="tree" >
 
-  <li class="active"><a href="/"><i class="fa fa-home">
+  <li class="active">
+    <a href="/"><i class="fa fa-home">
       </i> <span>Inicio</span></a>
   </li>
 

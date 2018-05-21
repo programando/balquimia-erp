@@ -8,7 +8,7 @@
 </head>
 
 <body class="login-page bg-grey">
-
+  <div id="VueApp">
   <div class="login-box">
     <div class="login-logo">
       <a href=   "{{ route( 'login' )}}"> <b> {{ trans('_app.EMPRESA') }}-ERP</b></a>
@@ -86,6 +86,9 @@
     </div>  <!-- /.login-box-body -->
 
   </div>
+</div>
+
+<div id="VueMenuApp"></div>
 
   @include('adminLayout.files-js')
 

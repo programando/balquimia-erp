@@ -7,6 +7,7 @@
   </head>
 
 <body class="hold-transition skin-blue sidebar-mini fixed">
+  <div id="VueApp">
     <div class="wrapper">
 
         @include('adminLayout.header.main-header')        <!-- Main Header -->
@@ -17,11 +18,11 @@
 
             <section class="content container-fluid">     <!-- Main content --> <!---  Your Page Content Here | -->
 
-                <div id="VueApp">
+
 
                     @yield('contenido')
 
-                </div>
+
 
             </section>
 
@@ -34,7 +35,7 @@
       <!-- Add the sidebar's background. This div must be placed
       immediately after the control sidebar -->
       <div class="control-sidebar-bg"></div>
-
+  </div>
 
    </div>
     <!-- ./wrapper -->

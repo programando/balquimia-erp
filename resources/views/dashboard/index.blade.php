@@ -76,6 +76,7 @@
         <!-- /.col -->
       </div>
 
+    <router-view></router-view>
 
   @endsection
 
