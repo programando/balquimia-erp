@@ -12,14 +12,14 @@ let mix = require('laravel-mix');
  */
 
 // componentes      'resources/assets/js/main.js',                  // Instancia de Vue ( #main)
+//      'resources/assets/js/app-menu.js',
+//      'resources/assets/js/axios.js',
 
-mix.js(['resources/assets/js/app.js',
+   mix.js(['resources/assets/js/app.js',
         ], 'public/js/Vue-App.js' )
 
    mix.scripts([
       'resources/assets/js/toastr.js',
-      'resources/assets/js/axios.js',
-      'resources/assets/js/app-menu.js',
     ], 'public/js/app.js'    ) // Archivo de salida JS
    .styles ([
         'resources/assets/css/toastr.css',

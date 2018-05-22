@@ -1,9 +1,44 @@
-<div id="VueMenuApp">
-
+ <div>
 
 <ul class="sidebar-menu" data-widget="tree" >
 
-  <li class="active">
+    <li >
+         <router-link :to="{name : 'inicio'}"><i class="fa fa-home"></i> <span>Inicio</span> </router-link>
+    </li>
+
+    <li class="treeview">
+      <a href="#">
+        <i class="fa fa-dashboard"></i> <span>Configuración</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><router-link :to="{name : 'cargos'}" ><i class="fa fa-home"></i> <span>Cargos</span> </router-link></li>
+        <li><router-link :to="{name : 'lineas'}" ><i class="fa fa-home"></i> <span>Líneas</span> </router-link></li>
+        <li><router-link :to="{name : 'und-medidas'}" ><i class="fa fa-home"></i> <span>Unidades de Medida</span> </router-link></li>
+      </ul>
+    </li>
+  {{--
+    <li class="treeview">
+      <a href="#">
+        <i class="fa fa-dashboard"></i> <span>Producción</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><router-link to='/ruta2' ><i class="fa fa-home"></i> <span>ruta 2</span> </router-link></li>
+        <li><router-link to='/ruta3' ><i class="fa fa-home"></i> <span>Ruta 3</span> </router-link></li>
+      </ul>
+    </li>
+     --}}
+</ul>
+
+</div>
+
+
+   {{--  <li class="active">
     <a href="/"><i class="fa fa-home">
       </i> <span>Inicio</span></a>
   </li>
@@ -39,4 +74,6 @@
             @endif
         @endforeach
 
-</div>
+   --}}
+
+

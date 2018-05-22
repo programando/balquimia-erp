@@ -159,6 +159,7 @@
 <script>
 
 
+
 class ErrorsController {
     constructor() { this.ErrorsController      = {}; }
     get( field ){
@@ -172,6 +173,7 @@ class ErrorsController {
    clearall (        ) {    this.ErrorsController      = {};                        }
 }
 
+//import FormClass from '../../formClass.js';
 
     export default {
 
