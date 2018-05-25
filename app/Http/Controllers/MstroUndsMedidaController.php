@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\PrdUndsMedida as UnidadesMedida;
+use App\Models\MstroUndsMedida as UnidadesMedida;
 
 
-class PrdUnidsMedidaController extends Controller
+class MstroUndsMedidaController extends Controller
 {
     private $Page_Title;
 

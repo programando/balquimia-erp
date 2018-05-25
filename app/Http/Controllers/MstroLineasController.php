@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\MstroLinea as Lineas;
 
-use App\Models\GralLinea as Lineas;
-
-class GralLineasController extends Controller
+class MstroLineasController extends Controller
 {
      private $Page_Title;
 
@@ -15,9 +14,17 @@ class GralLineasController extends Controller
         $this->Page_Title = 'Líneas de Producto';
     }
 
+    public function prueba(){
+      //<td>{{ $user->getRoleNames()->implode(', ') }}</td>
+         $Lineas =  Lineas::with('SubLineas')->orderBy('nom_linea')->where('id_linea','>','0')->paginate(10);
+         return $Lineas;
+    }
+
 
     public function index() {
-        $Lineas =  Lineas::orderBy('nom_linea')->where('id_linea','>','0')->paginate(10);
+
+        $Lineas =  Lineas::with('SubLineas')->orderBy('nom_linea')->where('id_linea','>','0')->paginate(10);
+
          return [
             'pagination' => [
                 'total'        => $Lineas->total(),

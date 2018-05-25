@@ -45,7 +45,8 @@ class LoginController extends Controller
                   'inactivo' => 0,
                   'empleado' => 1 ],
                   $remember ) ) {
-                return Redirect::intended();
+                //return Redirect::intended();
+           return Redirect('/');
            }
            //En caso de que no pueda loguearse
            return Redirect('/login')

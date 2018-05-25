@@ -11,20 +11,19 @@ let mix = require('laravel-mix');
  |
  */
 
-// componentes      'resources/assets/js/main.js',                  // Instancia de Vue ( #main)
-//      'resources/assets/js/app-menu.js',
-//      'resources/assets/js/axios.js',
+
 
    mix.js(['resources/assets/js/app.js',
-        ], 'public/js/Vue-App.js' )
+        ], 'public/js/Vue-App.js' );
 
    mix.scripts([
-      'resources/assets/js/toastr.js',
-    ], 'public/js/app.js'    ) // Archivo de salida JS
-   .styles ([
+      'resources/assets/js/vendors/toastr.js',
+    ], 'public/js/app.js'    ) ;// Archivo de salida JS
+
+   mix.styles ([
         'resources/assets/css/toastr.css',
         'resources/assets/css/app.css',
-       ], 'public/css/app-temp.css') ;     // Archivo de salida CSS
+       ], 'public/css/app.css') ;     // Archivo de salida CSS
 
 
     mix.browserSync({

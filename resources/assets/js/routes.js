@@ -8,19 +8,19 @@ Vue.config.devtools = true;
 
 export default new Router({
    routes : [
-        { component : require('./components/generales/dashboad'),
+        { component : require('./components/maestros/Dashboad'),
           name      : 'inicio',
           path      : '/'     },
 
-        { component : require('./components/generales/Cargos'),
+        { component : require('./components/maestros/Cargos'),
           name      : 'cargos',
           path      : '/cargos'     },
 
-        { component : require('./components/productos/ProdUndMedidas') ,
+        { component : require('./components/maestros/UndMedidas') ,
           name      : 'und-medidas',
           path      : '/und-medida'     },
 
-        { component : require('./components/generales/Lineas')  ,
+        { component : require('./components/maestros/Lineas')  ,
           name      : 'lineas',
           path      : '/lineas'     },
 
@@ -29,7 +29,10 @@ export default new Router({
         }
 
       ],
-  // linkExactActiveClass: 'active',
-   linkActiveClass:   'active',
+   linkExactActiveClass: 'active',
+   //linkActiveClass:   'active',
    mode:              'history',
+   scrollBehavior(){
+      return { x:0, y:0 };
+   }
 });

@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\RhCargo as Cargos;
+use App\Models\MstroCargo as Cargos;
 
-class RhCargosController extends Controller
+class MstroCargosController extends Controller
 {
     private $Page_Title;
 
 
     public function __construct(){
-        $this->Page_Title = 'Cargos';
+      //$this->middleware('auth');
+      $this->Page_Title = 'Cargos';
     }
 
     public function index() {
+
         $Cargos =  Cargos::orderBy('nom_cargo')->where('id_cargo','>','0')->paginate(10);
          return [
             'pagination' => [

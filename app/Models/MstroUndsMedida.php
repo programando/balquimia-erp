@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PrdUndsMedida extends Model
+class MstroUndsMedida extends Model
 {
-     protected $table      ='prd_unds_medidas';
+     protected $table      ='mstro_unds_medidas';
      protected $primaryKey = 'id_med';
      public $timestamps    = false;
 

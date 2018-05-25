@@ -1,5 +1,4 @@
 
-
 blockquote .frase{
   font-size: 12.5px !important;
   font-style: italic ;
@@ -37,6 +36,38 @@ blockquote .frase{
     padding-top: 5px;
     padding-right: 10px;
     padding-bottom: 5px;
-
 }
 
+.login-logo, .register-logo {
+    font-size: 35px;
+    text-align: center;
+   margin-bottom: 5px;
+    font-weight: 300;
+    padding-bottom: 10px;
+}
+
+.sub-tit-logo {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.active {
+  border-left-color: #3c8dbc !important;
+  color: #fff !important;
+  background: #3C8DBC !important;
+}
+
+
+/* Las animaciones de entrada y salida pueden utilizar */
+/* diferentes funciones y duraciones                   */
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s cubic-bezier(.17, .67, .83, .67);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for <2.1.8 */ {
+  transform: translateY(800px);
+  opacity: 0;
+}

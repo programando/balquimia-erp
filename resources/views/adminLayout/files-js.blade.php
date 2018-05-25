@@ -6,7 +6,7 @@
 <script src="{{asset('admin-js/adminlte.min.js')}}"></script>
 <script src="{{asset('plugins/icheck/icheck.js')}}"></script>
 
-<script src="{{asset('js/Vue-App.js')}}"></script>
+<script src="{{mix('js/Vue-App.js')}}"></script>
 <script src="{{mix('js/app.js')}}"></script>
 
 

@@ -2,7 +2,7 @@
       <div>
         <div class="row" >
 
-          <div class="col-sm-8 col-sm-offset-2">
+          <div class="col-sm-10 col-sm-offset-1">
             <div class="box box-primary">
               <div class="box-header with-border">
               <h3 >{{ Windows_Title }}
@@ -19,6 +19,7 @@
                       <th v-text="Table_Column1"></th>
                       <th v-text="Table_Column2"></th>
                       <th v-text="Table_Column3"></th>
+                      <th> Sub-Lineas</th>
                       <th v-text="Table_Column4"></th>
                     </tr>
                   </thead>
@@ -27,22 +28,27 @@
                        <td v-text="Registro.cod_linea"></td>
                       <td v-text="Registro.nom_linea"></td>
                       <td>
-                        <div v-if="Registro.inactivo"> <span class="bg-red"> &nbsp; Inactiva &nbsp;</span></div>
+                        <div v-if="Registro.inactivo"> <small><span class="bg-red">&nbsp; Inactiva &nbsp;</span></small></div>
                       </td>
+
+                      <td>
+                         <div v-for="(item, key, index) in Registro.sub_lineas" style="display: inline;">
+                            {{ item.nom_sub_linea }}<span v-if="key < Registro.sub_lineas.length-1">,</span>
+                        </div>
+                      </td>
+
                       <td class="text-center"width="15px">
+                          <button type="button" class="btn btn-success btn-xs"   title="Editar registro"
+                          @click="ModalOpen('ActualizarRegistro', Registro )">
+                          <i class="fa  fa-pencil" ></i>
+                        </button>
 
-                        <button type="button" class="btn btn-success btn-xs"   title="Editar registro"
-                        @click="ModalOpen('ActualizarRegistro', Registro )">
-                        <i class="fa  fa-pencil" ></i>
-                      </button>
 
-
-                      <button type="button" class="btn btn-danger btn-xs"   title="Eliminar registro"
-                      @click="BorrarShowForm( Registro.id_linea, Registro.nom_linea )">
-                      <i class="fa fa-trash-o" ></i>
-                    </button> &nbsp;
-
-                  </td>
+                        <button type="button" class="btn btn-danger btn-xs"   title="Eliminar registro"
+                        @click="BorrarShowForm( Registro.id_linea, Registro.nom_linea )">
+                        <i class="fa fa-trash-o" ></i>
+                      </button> &nbsp;
+                    </td>
                 </tr>
               </tbody>
             </table>
@@ -231,8 +237,8 @@ class ErrorsController {
                   offset : 3,
                   Windows_Title        : 'Líneas de Producto',
                   Table_Column1        : 'Cód.',
-                  Table_Column2        : 'Descripción Cargo',
-                  Table_Column3        : 'Estado',
+                  Table_Column2        : 'Nombre Línea',
+                  Table_Column3        : '  Estado...',
                   Table_Column4        : 'Editar/Eliminar',
                   Modal_Campo_Inactivo : 'Línea INACTIVA',
                   Modal_Campo_Activo   : 'Línea ACTIVA',
@@ -271,9 +277,10 @@ class ErrorsController {
             Listar: function( page=1 ){
                 let Me  = this;
                 let URL = Me.RutaBase  +'?page=' + page ;
-                axios.get( URL   ).then(function ( response ) {
-                    Me.DatosTabla     =  response.data.Registros.data;
-                    Me.pagination     =  response.data.pagination;
+                axios.get( URL   )
+                  .then(function ( response ) {
+                     Me.DatosTabla     =  response.data.Registros.data;
+                     Me.pagination     =  response.data.pagination;
                 })
                 .catch(  this.onFail );
             },
@@ -398,5 +405,6 @@ class ErrorsController {
         .centrar{
           margin: 0 auto;
         }
+
 
 </style>

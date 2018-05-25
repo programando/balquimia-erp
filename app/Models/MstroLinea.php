@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class GralLinea extends Model
+class MstroLinea extends Model
 {
   protected $primaryKey = 'id_linea';
-  public $timestamps = false;
-  protected $table ='gral_lineas';
+  protected $table      ='mstro_lineas';
+  public $timestamps    = false;
 
   protected $casts = [
     'orden' => 'int',
@@ -30,7 +30,7 @@ class GralLinea extends Model
 
 
   public function SubLineas() {
-    return $this->hasMany(\App\Models\GralLineasSubLinea::class, 'id_linea');
+    return $this->hasMany(\App\Models\MstroLineasSubLinea::class, 'id_linea');
   }
 
 

@@ -12,7 +12,7 @@
   <div class="login-box">
     <div class="login-logo">
       <a href=   "{{ route( 'login' )}}"> <b> {{ trans('_app.EMPRESA') }}-ERP</b></a>
-     <div class="text-center sub-tit-logo">Interprice Planing Resources</div>
+     <div class="text-center sub-tit-logo">Enterprice Planing Resources</div>
     </div>
 
     <!-- /.login-logo -->
