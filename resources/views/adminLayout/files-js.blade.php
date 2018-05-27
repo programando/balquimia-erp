@@ -20,5 +20,8 @@
         radioClass: 'iradio_square',
         increaseArea: '20%' // optional
         });
+
+       $('.select2').select2()
+
     });
 </script>

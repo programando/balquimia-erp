@@ -12368,8 +12368,7 @@ __webpack_require__(15);
 
 
 
-//https://github.com/asika32764/vue2-animate
-//require('vue2-animate/dist/vue2-animate.min.css')
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('sublineas', __webpack_require__(59));
 
 var VueApp = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
@@ -12377,6 +12376,9 @@ var VueApp = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   router: __WEBPACK_IMPORTED_MODULE_1__routes__["a" /* default */]
 
 });
+
+//https://github.com/asika32764/vue2-animate
+//require('vue2-animate/dist/vue2-animate.min.css')
 
 /***/ }),
 /* 15 */
@@ -18817,6 +18819,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 var ErrorsController = function () {
@@ -18901,7 +18928,10 @@ var ErrorsController = function () {
             Table_Column3: '  Estado...',
             Table_Column4: 'Editar/Eliminar',
             Modal_Campo_Inactivo: 'Línea INACTIVA',
-            Modal_Campo_Activo: 'Línea ACTIVA'
+            Modal_Campo_Activo: 'Línea ACTIVA',
+            Registro: {},
+            SubLineasFaltantes: {},
+            sublineasagregadas: {}
         };
     },
 
@@ -18987,6 +19017,17 @@ var ErrorsController = function () {
             this.nom_linea = NomMedida;
             this.ModalShowDelete = 1;
         },
+        SubLineasFaltantesPorLinea: function SubLineasFaltantesPorLinea(idLinea) {
+            var Me = this;
+            var URL = '/sublineas-linea/' + idLinea;
+            Me.SubLineasFaltantes = {};
+            axios.get(URL).then(function (response) {
+                console.log(response.data);
+                Me.SubLineasFaltantes = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
 
 
         onFail: function onFail(error) {
@@ -19007,6 +19048,7 @@ var ErrorsController = function () {
                     }
                 case "ActualizarRegistro":
                     {
+                        this.SubLineasFaltantesPorLinea(data.id_linea);
                         this.id_linea = data.id_linea;
                         this.inactivo = data.inactivo;
                         this.nom_linea = data.nom_linea;
@@ -19014,6 +19056,7 @@ var ErrorsController = function () {
                         this.ModalShowNewEdit = 1;
                         this.ModalTitle = 'Modificar Línea';
                         this.tipoAccion = 2;
+                        this.Registro = data;
                         break;
                     }
             }
@@ -19113,21 +19156,8 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "td",
-                        _vm._l(Registro.sub_lineas, function(item, key, index) {
-                          return _c(
-                            "div",
-                            { staticStyle: { display: "inline" } },
-                            [
-                              _vm._v(
-                                "\n                        " +
-                                  _vm._s(item.nom_sub_linea)
-                              ),
-                              key < Registro.sub_lineas.length - 1
-                                ? _c("span", [_vm._v(",")])
-                                : _vm._e()
-                            ]
-                          )
-                        })
+                        [_c("sublineas", { attrs: { Registro: Registro } })],
+                        1
                       ),
                       _vm._v(" "),
                       _c(
@@ -19444,94 +19474,188 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm.tipoAccion == 2
-                        ? _c("div", [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.inactivo,
-                                  expression: "inactivo"
-                                }
-                              ],
-                              attrs: {
-                                type: "checkbox",
-                                id: "md_checkbox_21",
-                                name: "inactivo"
-                              },
-                              domProps: {
-                                checked: _vm.inactivo,
-                                checked: Array.isArray(_vm.inactivo)
-                                  ? _vm._i(_vm.inactivo, null) > -1
-                                  : _vm.inactivo
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a = _vm.inactivo,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = null,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        (_vm.inactivo = $$a.concat([$$v]))
+                      _c("div", { staticClass: "form-group" }, [
+                        _vm.tipoAccion == 2
+                          ? _c("div", [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.inactivo,
+                                    expression: "inactivo"
+                                  }
+                                ],
+                                attrs: {
+                                  type: "checkbox",
+                                  id: "md_checkbox_21",
+                                  name: "inactivo"
+                                },
+                                domProps: {
+                                  checked: _vm.inactivo,
+                                  checked: Array.isArray(_vm.inactivo)
+                                    ? _vm._i(_vm.inactivo, null) > -1
+                                    : _vm.inactivo
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$a = _vm.inactivo,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = null,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          (_vm.inactivo = $$a.concat([$$v]))
+                                      } else {
+                                        $$i > -1 &&
+                                          (_vm.inactivo = $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1)))
+                                      }
                                     } else {
-                                      $$i > -1 &&
-                                        (_vm.inactivo = $$a
-                                          .slice(0, $$i)
-                                          .concat($$a.slice($$i + 1)))
+                                      _vm.inactivo = $$c
                                     }
-                                  } else {
-                                    _vm.inactivo = $$c
                                   }
                                 }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.inactivo
-                              ? _c("label", {
-                                  attrs: { for: "md_checkbox_21" },
-                                  domProps: {
-                                    textContent: _vm._s(
-                                      _vm.Modal_Campo_Inactivo
-                                    )
-                                  }
-                                })
-                              : _vm._e(),
-                            _vm._v(" "),
-                            !_vm.inactivo
-                              ? _c("label", {
-                                  attrs: { for: "md_checkbox_21" },
-                                  domProps: {
-                                    textContent: _vm._s(_vm.Modal_Campo_Activo)
-                                  }
-                                })
-                              : _vm._e()
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.id_linea,
-                            expression: "id_linea"
-                          }
-                        ],
-                        attrs: { type: "hidden" },
-                        domProps: { value: _vm.id_linea },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                              }),
+                              _vm._v(" "),
+                              _vm.inactivo
+                                ? _c("label", {
+                                    attrs: { for: "md_checkbox_21" },
+                                    domProps: {
+                                      textContent: _vm._s(
+                                        _vm.Modal_Campo_Inactivo
+                                      )
+                                    }
+                                  })
+                                : _vm._e(),
+                              _vm._v(" "),
+                              !_vm.inactivo
+                                ? _c("label", {
+                                    attrs: { for: "md_checkbox_21" },
+                                    domProps: {
+                                      textContent: _vm._s(
+                                        _vm.Modal_Campo_Activo
+                                      )
+                                    }
+                                  })
+                                : _vm._e()
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.id_linea,
+                              expression: "id_linea"
                             }
-                            _vm.id_linea = $event.target.value
+                          ],
+                          attrs: { type: "hidden" },
+                          domProps: { value: _vm.id_linea },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.id_linea = $event.target.value
+                            }
                           }
-                        }
-                      })
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "div",
+                            { staticClass: "col-sm-12" },
+                            [
+                              _vm.Registro.sub_lineas_count > 0
+                                ? _c(
+                                    "label",
+                                    { staticClass: "control-label" },
+                                    [_vm._v("Sub-Líneas asociadas:")]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _c("sublineas", {
+                                attrs: { Registro: _vm.Registro }
+                              })
+                            ],
+                            1
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-sm-12" }, [
+                            _c("label", { staticClass: "control-label" }, [
+                              _vm._v(" Asociar Sub-Líneas")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group" }, [
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.sublineasagregadas,
+                                      expression: "sublineasagregadas"
+                                    }
+                                  ],
+                                  staticClass: "form-control select2",
+                                  staticStyle: { width: "100%" },
+                                  attrs: {
+                                    multiple: "multiple",
+                                    name: "sublineas[]"
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.sublineasagregadas = $event.target
+                                        .multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    }
+                                  }
+                                },
+                                _vm._l(_vm.SubLineasFaltantes, function(
+                                  SubLinea
+                                ) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      domProps: { value: SubLinea.id_sub_linea }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                  " +
+                                          _vm._s(SubLinea.nom_sub_linea)
+                                      )
+                                    ]
+                                  )
+                                })
+                              )
+                            ])
+                          ])
+                        ])
+                      ])
                     ]
                   )
                 ]),
@@ -19810,6 +19934,107 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-0302405e", module.exports)
+  }
+}
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(60)
+/* template */
+var __vue_template__ = __webpack_require__(61)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\partials\\SubLineas.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-cfdbea9a", Component.options)
+  } else {
+    hotAPI.reload("data-v-cfdbea9a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['Registro']
+});
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    _vm._l(_vm.Registro.sub_lineas, function(item, key, index) {
+      return _c(
+        "div",
+        { key: _vm.Registro.idlinea, staticStyle: { display: "inline" } },
+        [
+          _vm._v("\n     " + _vm._s(item.nom_sub_linea)),
+          key < _vm.Registro.sub_lineas.length - 1
+            ? _c("span", [_vm._v(",")])
+            : _vm._e()
+        ]
+      )
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-cfdbea9a", module.exports)
   }
 }
 

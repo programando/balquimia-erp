@@ -18,14 +18,15 @@ Route::post('update-password'         , 'LoginController@UpdatePassword')->name(
 
 
 Route::middleware(['VerifyAutenticationAndRequestJson'])->group(function () {
-    Route::resource('cargos',       'MstroCargosController',       ['except'=>'edit','create']);
-    Route::resource('lineas',       'MstroLineasController',       ['except'=>'edit','create']);
-    Route::resource('sublineas',     'MstroLineasController',      ['except'=>'edit','create']);
-    Route::resource('medidas',      'MstroUndsMedidaController',   ['except'=>'edit','create']);
+    Route::resource('cargos',         'MstroCargosController',       ['except'=>'edit','create']);
+    Route::resource('lineas',         'MstroLineasController',       ['except'=>'edit','create']);
+    Route::resource('medidas',        'MstroUndsMedidaController',   ['except'=>'edit','create']);
 });
 
+
+Route::get('sublineas-linea/{idlinea}',     'MstroLineasSubLineasController@FaltantesPorLinea');
 Route::middleware(['auth'])->group(function () {
-    Route::get('/{any?}',                'DashBoardController@Index')->name('dashboad')->where('any','.*');
+    Route::get('/{any?}',             'DashBoardController@Index')->name('dashboad')->where('any','.*');
 });
 
 

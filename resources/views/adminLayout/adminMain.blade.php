@@ -37,6 +37,7 @@
               <div class="control-sidebar-bg"></div>
             </div>
       </div>
+
       <!-- ./wrapper -->
       <!-- REQUIRED JS SCRIPTS -->
       @include('adminLayout.files-js')

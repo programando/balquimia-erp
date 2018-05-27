@@ -18,11 +18,13 @@ let mix = require('laravel-mix');
 
    mix.scripts([
       'resources/assets/js/vendors/toastr.js',
+      'resources/assets/js/vendors/select2.full.min.js',
     ], 'public/js/app.js'    ) ;// Archivo de salida JS
 
    mix.styles ([
         'resources/assets/css/toastr.css',
         'resources/assets/css/app.css',
+        'resources/assets/css/select2.css',
        ], 'public/css/app.css') ;     // Archivo de salida CSS
 
 

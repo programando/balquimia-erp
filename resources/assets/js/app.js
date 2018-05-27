@@ -7,8 +7,9 @@ require('./bootstrap');
 import Vue       from 'vue';
 import router    from './routes';
 
-//https://github.com/asika32764/vue2-animate
-//require('vue2-animate/dist/vue2-animate.min.css')
+
+
+Vue.component('sublineas', require('./components/partials/SubLineas'));
 
 const VueApp = new Vue({
 
@@ -19,7 +20,8 @@ const VueApp = new Vue({
 
 
 
-
+//https://github.com/asika32764/vue2-animate
+//require('vue2-animate/dist/vue2-animate.min.css')
 
 
 

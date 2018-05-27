@@ -16,14 +16,20 @@ class MstroLineasController extends Controller
 
     public function prueba(){
       //<td>{{ $user->getRoleNames()->implode(', ') }}</td>
-         $Lineas =  Lineas::with('SubLineas')->orderBy('nom_linea')->where('id_linea','>','0')->paginate(10);
+         $Lineas =  Lineas::withCount('SubLineas')
+                    ->with('SubLineas')
+                    ->orderBy('nom_linea')->where('id_linea','>','0')->paginate(10);
          return $Lineas;
     }
 
 
     public function index() {
 
-        $Lineas =  Lineas::with('SubLineas')->orderBy('nom_linea')->where('id_linea','>','0')->paginate(10);
+        $Lineas =  Lineas::withCount('SubLineas')
+                      ->with('SubLineas')
+                      ->orderBy('nom_linea')
+                      ->where('id_linea','>','0')
+                      ->paginate(10);
 
          return [
             'pagination' => [

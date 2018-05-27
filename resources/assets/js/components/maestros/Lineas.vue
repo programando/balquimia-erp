@@ -32,9 +32,7 @@
                       </td>
 
                       <td>
-                         <div v-for="(item, key, index) in Registro.sub_lineas" style="display: inline;">
-                            {{ item.nom_sub_linea }}<span v-if="key < Registro.sub_lineas.length-1">,</span>
-                        </div>
+                          <sublineas :Registro="Registro"></sublineas>
                       </td>
 
                       <td class="text-center"width="15px">
@@ -107,7 +105,7 @@
                       </div>
                     </div>
 
-                       <div class="form-group " has-feedback :class = "{ 'has-error': errors.has('nom_linea')}">
+                      <div class="form-group " has-feedback :class = "{ 'has-error': errors.has('nom_linea')}">
                       <div class="row" >
                          <div class="col-sm-3">
                              <label for="codlinea" class="control-label">Nombre Línea:</label>
@@ -121,13 +119,8 @@
                       </div>
                     </div>
                 </div>
-
-
-
-
-
-
                       <!-- Campo Inactivo -->
+                     <div class="form-group">
                        <div v-if="tipoAccion==2">
                           <input type="checkbox" id="md_checkbox_21"
                             v-model="inactivo" :checked="inactivo" name="inactivo">
@@ -135,6 +128,37 @@
                           <label for="md_checkbox_21" v-if="!inactivo" v-text="Modal_Campo_Activo"></label>
                       </div>
                       <input type="hidden" v-model="id_linea">
+                    </div>
+
+
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <label v-if="Registro.sub_lineas_count > 0"  class="control-label">Sub-Líneas asociadas:</label>
+                            <sublineas :Registro="Registro"></sublineas>
+                          </div>
+                     </div>
+                    </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <label   class="control-label"> Asociar Sub-Líneas</label>
+
+                            <div class="form-group">
+                               <select class            = "form-control select2" v-model="sublineasagregadas"
+                                        multiple        = "multiple"
+                                        name            = "sublineas[]"
+                                        style           = "width: 100%;"  >
+                                      <option v-for="SubLinea in SubLineasFaltantes" :value="SubLinea.id_sub_linea">
+                                      {{ SubLinea.nom_sub_linea }}</option>
+                                </select>
+                            </div>
+
+
+                          </div>
+                     </div>
+                    </div>
+
                   </form>
 
                 </div>
@@ -150,6 +174,7 @@
             </div>
             <!-- /.modal-dialog -->
           </div> <!--Fin del modal-->
+
 
          <!-- MODAL PARA BORRAR REGSITRO -->
         <div class="modal fade"  tabindex="-1" role="dialog" :class="{'mostrar-borrar':ModalShowDelete}">
@@ -242,6 +267,9 @@ class ErrorsController {
                   Table_Column4        : 'Editar/Eliminar',
                   Modal_Campo_Inactivo : 'Línea INACTIVA',
                   Modal_Campo_Activo   : 'Línea ACTIVA',
+                  Registro             : {},
+                  SubLineasFaltantes            : {},
+                  sublineasagregadas : {},
               }
        },
 
@@ -335,6 +363,19 @@ class ErrorsController {
                     this.ModalShowDelete = 1;
             },
 
+            SubLineasFaltantesPorLinea( idLinea) {
+                let Me  = this;
+                let URL = '/sublineas-linea/'+ idLinea;
+                Me.SubLineasFaltantes = {};
+                axios.get( URL   )
+                  .then(function ( response ) {
+                      console.log( response.data);
+                      Me.SubLineasFaltantes = response.data;
+                })
+                .catch( error =>{
+                    console.log ( error );
+                } );
+            },
 
             onFail: function (error){
               this.errors.record( error.response.data.errors);
@@ -351,6 +392,7 @@ class ErrorsController {
                         break;
                     }
                     case "ActualizarRegistro" : {
+                        this.SubLineasFaltantesPorLinea(data.id_linea);
                         this.id_linea           = data.id_linea;
                         this.inactivo         = data.inactivo;
                         this.nom_linea          = data.nom_linea;
@@ -358,6 +400,7 @@ class ErrorsController {
                         this.ModalShowNewEdit = 1;
                         this.ModalTitle       ='Modificar Línea';
                         this.tipoAccion       = 2;
+                        this.Registro         = data;
                         break;
                     }
                 }

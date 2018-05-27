@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\MstroLineasSubLinea as SubLineas;
 
+use DB;
 class MstroLineasSubLineasController extends Controller
 {
     /**
@@ -12,6 +13,13 @@ class MstroLineasSubLineasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function FaltantesPorLinea( Request $request){
+
+       $SubLineas =   DB::select(' call sublineas_faltantes_x_linea(?) ', array( $request->idlinea));
+
+       return $SubLineas;
+    }
+
     public function index()
     {
         //

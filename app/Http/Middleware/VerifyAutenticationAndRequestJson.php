@@ -17,7 +17,7 @@ class VerifyAutenticationAndRequestJson
     public function handle($request, Closure $next)
     {
         if ( auth()->check()  && $request->wantsJson()){
-           return $next($request);
+           return $next( $request );
         }
         return Redirect('/');
     }
